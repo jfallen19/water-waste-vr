@@ -76,9 +76,9 @@ void main() {
   float s_time = time / 10.0;
 
   float noise_current = snoise(uv + s_time);
-  float noise_next = snoise(uv + vec2(0.05) + s_time)
+  float noise_next = snoise(uv + vec2(0.05) + s_time);
 
-  vNormal = normal;//vec3();
+  vNormal = normal; //vec3();
   vec3 pos = position + normal * 0.25 * abs(vec3(noise_current)) + vec3(0.0, 0.0, height);
   
   gl_Position = projectionMatrix * modelViewMatrix * vec4( pos, 1.0 );
