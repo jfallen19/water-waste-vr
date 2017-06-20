@@ -9,21 +9,25 @@
       <a-assets>
         <a-mixin id="text-block-1"
           
-          text="align: center; width: 2; color: #444444; opacity: 0.0;
+          text="align: center; width: 4; color: #444444; opacity: 0.0; font: /assets/roboto.json;
+               fontImage: /assets/roboto.png; shader: msdf;
                value: 12 Eggs: \n643 gal./2400 l of water"
         ></a-mixin>
         <a-mixin id="text-block-2"
           opacity="0.0"
-          text="align: center; width: 2; color: #444444; opacity: 0.0;
+          text="align: center; width: 4; color: #444444; opacity: 0.0; font: /assets/roboto.json;
+               fontImage: /assets/roboto.png; shader: msdf;
                value: 3 Chocolate Bars: \n1347 gal./5100 l of water"
         ></a-mixin>
         <a-mixin id="text-block-3"
           opacity="0.0"
-          text="align: center; width: 2; color: #444444; opacity: 0.0;
+          text="align: center; width: 4; color: #444444; opacity: 0.0; font: /assets/roboto.json;
+               fontImage: /assets/roboto.png; shader: msdf;
                value: 1 Beef Steak (1lb/450g): \n1832 gal./6936 l of water"
         ></a-mixin>
 
-          <a-asset-item id="food" src="/assets/food.glb"></a-asset-item>
+          <a-asset-item id="food" src="/assets/food.obj"></a-asset-item>
+          <a-asset-item id="food-mtl" src="/assets/food.mtl"></a-asset-item>
           <!-- <a-asset-item id="water-normal" src="/assets/water.jpg"></a-asset-item> -->
           <img id="water-normal" src="/assets/water.jpg"></img>
       </a-assets>
@@ -31,7 +35,7 @@
       <a-entity>
         <!-- Room -->
         <a-plane position="0 0 0" rotation="-90 0 0" width="3" height="3" floor-tiles=""></a-plane>
-        <a-plane position="0 2.5 0" rotation="90 0 0" width="3" height="3"></a-plane>
+        <a-plane position="0 2.5 0" rotation="90 0 0" width="3" height="3" color="#ead3a5"></a-plane>
         <a-plane position="0 1.25 -1.5" rotation="0 0 0" width="3" height="2.5" color="#ead4b2"></a-plane>
         <a-plane position="1.5 1.25 0" rotation="0 -90 0" width="3" height="2.5" color="#ead4b2"></a-plane>
         <a-plane position="-1.5 1.25 0" rotation="0 90 0" width="3" height="2.5" color="#ead4b2"></a-plane>
@@ -48,18 +52,23 @@
             <a-box scale="0.1 1.0 0.1" position="0.75 -0.45 -0.25" color="#8c5454"></a-box>
             <a-box scale="0.1 1.0 0.1" position="-0.75 -0.45 -0.25" color="#8c5454"></a-box>
           </a-entity>
-          <a-entity position="0 0.1 0" scale="1 1 1" gltf-model="#food"></a-entity>
+          <a-entity rotation="0 -5 0" position="0.1 0.1 0.1" scale="0.1 0.1 0.1" obj-model="obj: #food; mtl: #food-mtl"></a-entity>
+          <a-entity position="0 1 -0.5">
+            <a-entity mixin="text-block-1" id="text-entity-1" text-auto-hide></a-entity>
+            <a-entity mixin="text-block-2" id="text-entity-2" text-auto-hide></a-entity>
+            <a-entity mixin="text-block-3" id="text-entity-3" text-auto-hide></a-entity>
+          </a-entity>
+
           <a-entity position="-0.5 0.1 0">
-            <a-entity mixin="text-block-1" id="text-entity-1" position="0.425 0.8 -0.4" text-auto-hide></a-entity>
-            <a-box className="target" scale="0.2 0.2 0.2" color="#EE0525" target="level: 0.3; textId: text-entity-1"></a-box>
+            
+            <a-box className="target" scale="0.5 0.5 0.5" material="opacity: 0.0;" target="level: 0.3; textId: text-entity-1"></a-box>
           </a-entity>
-          <a-entity position="0 0.1 0">
-            <a-entity mixin="text-block-2" id="text-entity-2" position="0.425 0.8 -0.4" text-auto-hide></a-entity>
-            <a-box className="target" scale="0.2 0.2 0.2" color="#EE0525" target="level: 0.57; textId: text-entity-2"></a-box>
+          <a-entity position="0.1 0.1 0">
+            <a-box className="target" scale="0.35 0.35 0.35" material="opacity: 0.0;" target="level: 0.57; textId: text-entity-2"></a-box>
           </a-entity>
-          <a-entity position="0.5 0.1 0">
-            <a-entity mixin="text-block-3" id="text-entity-3" position="0.425 0.8 -0.4" text-auto-hide></a-entity>
-            <a-box className="target" scale="0.2 0.2 0.2" color="#EE0525" target="level: 0.77; textId: text-entity-3"></a-box>
+          <a-entity position="0.55 0.1 0">
+            
+            <a-box className="target" scale="0.35 0.35 0.35" material="opacity: 0.0;" target="level: 0.77; textId: text-entity-3"></a-box>
           </a-entity>
         </a-entity>
       </a-entity>
