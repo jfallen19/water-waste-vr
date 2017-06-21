@@ -14,8 +14,12 @@
     <a-scene keyboard-shortcuts="enterVR:true;exitVR:true;resetSensor:true" embedded vr-mode-ui="enabled:true" auto-enter-vr="display:GearVR; enabled:true"> 
 
       <a-assets>
+        <a-mixin id="text-block-info"
+          text="align: center; width: 3; color: #444444; opacity: 1.0; font: ./assets/roboto.json;
+               fontImage: ./assets/roboto.png; shader: msdf;
+               value: Explore amount of water used to produce different products.\nLook at the product to select it"
+        ></a-mixin>
         <a-mixin id="text-block-1"
-          
           text="align: center; width: 4; color: #444444; opacity: 0.0; font: ./assets/roboto.json;
                fontImage: ./assets/roboto.png; shader: msdf;
                value: 12 Eggs: \n643 gal./2400 l of water"
@@ -64,6 +68,7 @@
             <a-entity mixin="text-block-1" id="text-entity-1" text-auto-hide></a-entity>
             <a-entity mixin="text-block-2" id="text-entity-2" text-auto-hide></a-entity>
             <a-entity mixin="text-block-3" id="text-entity-3" text-auto-hide></a-entity>
+            <a-entity mixin="text-block-info" text-auto-hide></a-entity>
           </a-entity>
 
           <a-entity position="-0.4 0.1 0">
@@ -80,7 +85,7 @@
         </a-entity>
       </a-entity>
 
-      <a-entity position="0 0 0" rotation="0 0 0" scale="1 1 1" visible="true">
+      <a-entity position="0 0 -0.5" rotation="0 0 0" scale="1 1 1" visible="true">
         <a-camera position="0 1.25 1.2" rotation="0 0 0" scale="1 1 1" visible="true" camera="userHeight:1; active:true" look-controls="" wasd-controls="">
           <a-entity cursor="fuse: true; fuseTimeout: 500; objects: .target"
           position="0 0 -0.1" custom-cursor>
