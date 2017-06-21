@@ -21,8 +21,8 @@ const fragmentShader = `
 
     float pA = TWO_PI / 100.0 * progress;
 
-    vec4 baseColor = vec4(0.75, 0.75, 0.75, 1.0); //* (1.0 - active) + vec4(0.55, 0.25, 0.75, 1.0) * active;
-    vec4 progressColor = vec4(0.85, 0.85, 0.85, 1.0);
+    vec4 baseColor = vec4(0.85, 0.85, 0.85, 1.0); //* (1.0 - active) + vec4(0.55, 0.25, 0.75, 1.0) * active;
+    vec4 progressColor = vec4(0.75, 0.75, 0.8, 1.0);
     vec4 color = vec4(0.0);
 
     color += baseColor * (1.0 - smoothstep(0.25, 0.45, distance(st, vec2(0.0))));

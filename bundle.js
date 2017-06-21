@@ -75,7 +75,7 @@
 
 var vertexShader = '\n  precision mediump float;\n\n  varying vec2 vUv;\n\n  void main() {\n    vUv = uv;\n    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n  }\n';
 
-var fragmentShader = '\n  precision mediump float;\n\n  varying vec2 vUv;\n  uniform float active;\n  uniform float progress;\n\n  void main() {\n    vec2 st = vUv * 2.0 - 1.0;\n\n    float pA = TWO_PI / 100.0 * progress;\n\n    vec4 baseColor = vec4(0.75, 0.75, 0.75, 1.0); //* (1.0 - active) + vec4(0.55, 0.25, 0.75, 1.0) * active;\n    vec4 progressColor = vec4(0.85, 0.85, 0.85, 1.0);\n    vec4 color = vec4(0.0);\n\n    color += baseColor * (1.0 - smoothstep(0.25, 0.45, distance(st, vec2(0.0))));\n\n    float a = abs(atan(st.y,st.x) - PI);\n    float smoothDist;\n    if(a < pA) {\n      smoothDist = smoothstep(0.45, 0.65, distance(st, vec2(0.0)));\n      color = max(progressColor * (1.0 - smoothDist), color);\n    }\n\n    gl_FragColor = color;\n  }\n';
+var fragmentShader = '\n  precision mediump float;\n\n  varying vec2 vUv;\n  uniform float active;\n  uniform float progress;\n\n  void main() {\n    vec2 st = vUv * 2.0 - 1.0;\n\n    float pA = TWO_PI / 100.0 * progress;\n\n    vec4 baseColor = vec4(0.85, 0.85, 0.85, 1.0); //* (1.0 - active) + vec4(0.55, 0.25, 0.75, 1.0) * active;\n    vec4 progressColor = vec4(0.75, 0.75, 0.8, 1.0);\n    vec4 color = vec4(0.0);\n\n    color += baseColor * (1.0 - smoothstep(0.25, 0.45, distance(st, vec2(0.0))));\n\n    float a = abs(atan(st.y,st.x) - PI);\n    float smoothDist;\n    if(a < pA) {\n      smoothDist = smoothstep(0.45, 0.65, distance(st, vec2(0.0)));\n      color = max(progressColor * (1.0 - smoothDist), color);\n    }\n\n    gl_FragColor = color;\n  }\n';
 
 var INCREMENT_SPEED = 1.0;
 var DECREMENT_SPEED = 5.0;
@@ -234,10 +234,10 @@ AFRAME.registerComponent('water', {
 
     // debugger;
 
-    var normalTex = new THREE.ImageLoader().load('/assets/water.jpg');
-    normalTex.minFilter = THREE.NearestFilter;
-    normalTex.magFilter = THREE.NearestFilter;
-    normalTex = THREE.ImageUtils.loadTexture('/assets/water.jpg');
+    // let normalTex = new THREE.ImageLoader().load('/assets/water.jpg');
+    // normalTex.minFilter = THREE.NearestFilter;
+    // normalTex.magFilter = THREE.NearestFilter;
+    // normalTex = THREE.ImageUtils.loadTexture('/assets/water.jpg');
 
     this.material = new THREE.ShaderMaterial({
       fragmentShader: _waterFrag2.default,
@@ -249,7 +249,7 @@ AFRAME.registerComponent('water', {
       uniforms: {
         time: { type: 'f', value: 0.0 },
         height: { type: 'f', value: this.level },
-        waterNormal: { type: 't', value: normalTex }
+        waterNormal: { type: 't', value: null }
       },
       transparent: true,
       side: THREE.FrontSide

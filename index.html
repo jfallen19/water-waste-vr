@@ -2,9 +2,16 @@
   <head>
     <script src="./vendor/aframe-v0.5.0.js"></script>
     <script src="./bundle.js"></script>
+    <style>
+      .a-canvas {
+        width: 1024px;
+        height: 768px;
+        margin: 0 auto;
+      }
+    </style>
   </head>
   <body>
-    <a-scene class="fullscreen" keyboard-shortcuts="enterVR:true;exitVR:true;resetSensor:true" vr-mode-ui="enabled:true" auto-enter-vr="display:GearVR; enabled:true"> 
+    <a-scene keyboard-shortcuts="enterVR:true;exitVR:true;resetSensor:true" embedded vr-mode-ui="enabled:true" auto-enter-vr="display:GearVR; enabled:true"> 
 
       <a-assets>
         <a-mixin id="text-block-1"
@@ -59,9 +66,9 @@
             <a-entity mixin="text-block-3" id="text-entity-3" text-auto-hide></a-entity>
           </a-entity>
 
-          <a-entity position="-0.5 0.1 0">
+          <a-entity position="-0.4 0.1 0">
             
-            <a-box className="target" scale="0.5 0.5 0.5" material="opacity: 0.0;" target="level: 0.3; textId: text-entity-1"></a-box>
+            <a-box className="target" scale="0.6 0.5 0.5" material="opacity: 0.0;" target="level: 0.3; textId: text-entity-1"></a-box>
           </a-entity>
           <a-entity position="0.1 0.1 0">
             <a-box className="target" scale="0.35 0.35 0.35" material="opacity: 0.0;" target="level: 0.57; textId: text-entity-2"></a-box>

@@ -9,10 +9,10 @@ AFRAME.registerComponent('water', {
 
     // debugger;
 
-    let normalTex = new THREE.ImageLoader().load('/assets/water.jpg');
-    normalTex.minFilter = THREE.NearestFilter;
-    normalTex.magFilter = THREE.NearestFilter;
-    normalTex = THREE.ImageUtils.loadTexture('/assets/water.jpg');
+    // let normalTex = new THREE.ImageLoader().load('/assets/water.jpg');
+    // normalTex.minFilter = THREE.NearestFilter;
+    // normalTex.magFilter = THREE.NearestFilter;
+    // normalTex = THREE.ImageUtils.loadTexture('/assets/water.jpg');
 
     this.material = new THREE.ShaderMaterial( {
       fragmentShader,
@@ -24,7 +24,7 @@ AFRAME.registerComponent('water', {
       uniforms: {
         time: { type: 'f', value: 0.0 },
         height: { type: 'f', value: this.level },
-        waterNormal: { type: 't', value: normalTex }
+        waterNormal: { type: 't', value: null }
       },
       transparent: true,
       side: THREE.FrontSide
